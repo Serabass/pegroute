@@ -22,5 +22,16 @@ describe("Default", () => {
       console.log(actual.error);
     }
     expect(actual.error).toBeFalsy();
+
+    new Processor(actual.ast).run();
   });
 });
+
+
+class Processor {
+  public constructor(public ast: any) {}
+
+  public run() {
+    console.log(this.ast.body);
+  }
+}

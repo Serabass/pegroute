@@ -244,6 +244,20 @@ ConstKeyword = "const"
 MethodName
  = "GET"
  / "POST"
+ / "PUT"
+ / "PATCH"
+ / "DELETE"
+ / "OPTIONS"
+ / "ALL"
+
+
+MethodList
+  = head:MethodName tail:(__ MethodName)* {
+      return {
+        type: "MethodList",
+        name: buildList(head, tail, 1)
+      };
+    }
 
 
 Keyword
@@ -305,7 +319,7 @@ ActionName
 Route
  = directives: Directives?
   __ "["
-  __ method: MethodName 
+  __ methods: MethodList 
   __ "]"
   __ pattern: RoutePattern 
   __ "="
@@ -313,7 +327,7 @@ Route
    return {
      type: "Route",
      directives,
-     method,
+     methods,
      pattern
    };
  }

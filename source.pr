@@ -7,7 +7,7 @@
 @as experts
 /experts {
   @as .index
-  [GET] / = ExpertController@index
+  [GET POST] / = ExpertController@index
   
   @as .item
   @where id numeric
