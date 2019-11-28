@@ -1,7 +1,12 @@
 # pegroute
 
 ```
-GET / as home = HomeController@index
+@as home
+GET / = HomeController@index
+
+@as expertPage
+@where expertId \w+_\w+
+GET /{expertId} = HomeController@index
 
 @namespace ExpertControllers
 @as experts
@@ -10,6 +15,7 @@ GET / as home = HomeController@index
   GET / = ExpertController@index
   
   @as .item
+  @where id ~ \d+
   GET /{id} as .item = ExpertController@item
 }
 
