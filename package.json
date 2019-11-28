@@ -1,0 +1,26 @@
+{
+  "name": "pegroute",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Serabass/pegroute",
+  "author": "Serabass <serabass565@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "tw": "jest --watch"
+  },
+  "dependencies": {
+    "asty": "^1.8.7",
+    "jest": "^24.9.0",
+    "pegjs": "^0.10.0",
+    "pegjs-util": "^1.4.18",
+    "ts-jest": "^24.2.0",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "tslint": "^5.20.1"
+  }
+}
