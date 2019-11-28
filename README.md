@@ -34,8 +34,12 @@ GET /{expertId} = HomeController@index
     @as .orders
     GET /orders = ExpertController@orders
     
-    @as .ordprofileers
-    GET /profile = ExpertController@profile
+    @as .profile
+    /profile {
+      
+      @as .index
+      GET / = ExpertProfileController@index
+    }
   }
   
   @as .client
