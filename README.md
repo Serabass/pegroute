@@ -15,7 +15,7 @@ GET /{expertId} = HomeController@index
   GET / = ExpertController@index
   
   @as .item
-  @where id ~ \d+
+  @where id \d+
   GET /{id} as .item = ExpertController@item
 }
 
