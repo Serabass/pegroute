@@ -1,5 +1,6 @@
 # pegroute
 
+```
 GET / as home = HomeController@index
 
 @namespace ExpertControllers
@@ -46,3 +47,4 @@ GET / as home = HomeController@index
     GET / = ClientController@profile
   }
 }
+```
