@@ -57,4 +57,105 @@ GET /{expertId} = HomeController@index
     GET / = ClientController@profile
   }
 }
+
+
+@uses api
+/api {
+  @as .teacher
+  /teacher {
+    @as .paginate
+    GET / = TeacherController@paginate
+    
+    @as .all
+    GET / = TeacherController@all
+    
+    /{id} {
+      @as .item
+      GET / = TeacherController@item
+      
+      @as .comments
+      GET /comments = TeacherController@comments
+      
+      @as .articles
+      GET /articles = TeacherController@articles
+      
+      @as .articles
+      @uses auth:api
+      POST /comment = TeacherController@postComment
+    }
+  }
+  
+  @as .education-center {
+    @as .paginat
+    GET / = EducationCenterController@paginate
+    
+    /{id} {
+      @as .item
+      GET / = EducationCenterController@item
+      
+      @as .comments
+      GET /comments = EducationCenterController@getComments
+      
+      @as .teachers
+      GET /comments = EducationCenterController@getComments
+      
+      @as .comment
+      @uses auth:api
+      POST /comment = EducationCenterController@postComment
+    }
+  }
+  
+  @as .speciality {
+    @as .all
+    GET / = SpecialityController@all
+  }
+  
+  @as .geo
+  /geo {
+  
+    @as .countries
+    GET /countries = GeoController@getCountries
+  
+    @as .cities
+    GET /cities = GeoController@getCities
+  }
+  
+  @as .article
+  /article {
+    @as .paginate
+    GET / = ArticleController@paginate
+    
+    @as .all
+    GET / = ArticleController@all
+    
+    @as .item
+    @where id \d+
+    GET /{id} = ArticleController@item
+  }
+  
+  @as .solr
+  /solr {
+    @ as .ping {
+      GET / = SolariumController@ping
+    }
+    @ as .search {
+      GET / = SolariumController@search
+    }
+  }
+  
+  @as .comment
+  @uses auth:api
+  @where id \d+
+  /comment/{id} {
+    @as .like
+    POST /like = CommentController@like
+    
+    @as .dislike
+    POST /dislike = CommentController@dislike
+  }
+}
+
+
+
+
 ```
